@@ -27,10 +27,16 @@ start_time = time.time()
 
 # Load CIFAR-10 dataset
 cifar10_train = CIFAR10(
-    root="./data", train=True, download=True, transform=transforms.ToTensor()
+    root="/scratch/ssm10076/pytorch-example/data",
+    train=True,
+    download=True,
+    transform=transforms.ToTensor(),
 )
 cifar10_test = CIFAR10(
-    root="./data", train=False, download=True, transform=transforms.ToTensor()
+    root="/scratch/ssm10076/pytorch-example/data",
+    train=False,
+    download=True,
+    transform=transforms.ToTensor(),
 )
 
 # Data loading time
