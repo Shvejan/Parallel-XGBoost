@@ -4,9 +4,9 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=2:00:00
-#SBATCH --mem=32GB
-#SBATCH --gres=gpu
-#SBATCH --job-name=torch
+#SBATCH --mem=28GB
+#SBATCH --gres=gpu:2
+#SBATCH --job-name=torch-single-2
 
 module purge
 

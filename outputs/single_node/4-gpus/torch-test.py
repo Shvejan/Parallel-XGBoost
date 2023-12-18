@@ -77,7 +77,7 @@ bst = train(
     verbose_eval=True,
     num_boost_round=10,
     early_stopping_rounds=10,
-    ray_params=RayParams(num_actors=1, gpus_per_actor=1, cpus_per_actor=1),
+    ray_params=RayParams(num_actors=4, gpus_per_actor=1, cpus_per_actor=1),
 )
 
 # Training time
@@ -117,4 +117,3 @@ print(f"Final validation accuracy: {val_accuracy[-1]:.4f}")
 # Total execution time
 total_time = time.time() - start_time
 print(f"Total execution time: {total_time:.2f} seconds")
-
