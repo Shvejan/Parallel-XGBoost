@@ -84,7 +84,7 @@ bst = train(
     verbose_eval=True,
     num_boost_round=10,
     early_stopping_rounds=10,
-    ray_params=RayParams(num_actors=1, gpus_per_actor=1, cpus_per_actor=8),
+    ray_params=RayParams(num_actors=2, gpus_per_actor=1, cpus_per_actor=4),
 )
 
 # Training time
@@ -114,7 +114,7 @@ plt.legend()
 plt.grid(True)
 
 # Save plot to file
-plt.savefig("training_validation_accuracy_cpu_only.png")
+plt.savefig("training_validation_accuracy_multi1.png")
 plt.show()
 
 # Print final accuracy values

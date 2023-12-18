@@ -1,12 +1,12 @@
 #!/bin/bash
 
 #SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
+#SBATCH --ntasks-per-node=4
 #SBATCH --cpus-per-task=8
 #SBATCH --time=00:30:00
 #SBATCH --mem=28GB
 #SBATCH --gres=gpu:rtx8000:4
-#SBATCH --job-name=torch-single-4
+#SBATCH --job-name=s4
 
 module purge
 
