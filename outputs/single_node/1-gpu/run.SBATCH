@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --time=00:30:00
 #SBATCH --mem=28GB
-#SBATCH --gres=gpu
+#SBATCH --gres=gpu:rtx8000
 #SBATCH --job-name=torch-single-1
 
 module purge
