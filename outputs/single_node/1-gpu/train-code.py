@@ -75,7 +75,7 @@ bst = train(
         "eval_metric": ["mlogloss", "merror"],
         "num_class": 10,
         "seed": 42,
-        "tree_method": "hist",
+        "tree_method": "gpu_hist",
         "device": "cuda",
     },
     train_set,

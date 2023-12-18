@@ -27,10 +27,16 @@ start_time = time.time()
 
 # Load CIFAR-10 dataset
 cifar10_train = CIFAR10(
-    root="./data", train=True, download=True, transform=transforms.ToTensor()
+    root="/scratch/ssm10076/pytorch-example/data",
+    train=True,
+    download=True,
+    transform=transforms.ToTensor(),
 )
 cifar10_test = CIFAR10(
-    root="./data", train=False, download=True, transform=transforms.ToTensor()
+    root="/scratch/ssm10076/pytorch-example/data",
+    train=False,
+    download=True,
+    transform=transforms.ToTensor(),
 )
 
 # Data loading time
@@ -69,7 +75,7 @@ bst = train(
         "eval_metric": ["mlogloss", "merror"],
         "num_class": 10,
         "seed": 42,
-        "tree_method": "hist",
+        "tree_method": "gpu_hist",
         "device": "cuda",
     },
     train_set,
@@ -78,7 +84,7 @@ bst = train(
     verbose_eval=True,
     num_boost_round=10,
     early_stopping_rounds=10,
-    ray_params=RayParams(num_actors=4, gpus_per_actor=1, cpus_per_actor=2),
+    ray_params=RayParams(num_actors=2, gpus_per_actor=1, cpus_per_actor=4),
 )
 
 # Training time
