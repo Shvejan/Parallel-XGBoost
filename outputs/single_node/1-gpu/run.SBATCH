@@ -13,4 +13,4 @@ module purge
 singularity exec --nv \
 	    --overlay /scratch/ssm10076/pytorch-example/cuda_env.ext3:ro \
 	    /scratch/work/public/singularity/cuda11.8.86-cudnn8.7-devel-ubuntu22.04.2.sif\
-	    /bin/bash -c "source /ext3/env.sh; python torch-test.py"
+	    /bin/bash -c "source /ext3/env.sh; python /scratch/ssm10076/pytorch-example/Parallel-XGBoost/outputs/single_node/1-gpu/code.py"
