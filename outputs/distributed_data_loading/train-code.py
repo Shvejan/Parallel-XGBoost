@@ -92,7 +92,7 @@ bst = train(
     verbose_eval=True,
     num_boost_round=10,
     early_stopping_rounds=10,
-    ray_params=RayParams(num_actors=4, gpus_per_actor=1, cpus_per_actor=2),
+    ray_params=RayParams(num_actors=1, gpus_per_actor=1, cpus_per_actor=8),
 )
 
 # Training time
