@@ -59,7 +59,15 @@ train_x, val_x, train_y, val_y = train_test_split(
 )
 
 # Create RayDMatrix
-train_set = RayDMatrix(train_x, train_y)
+train_set = RayDMatrix(
+    [
+        "/scratch/ssm10076/pytorch-example/Parallel-XGBoost/outputs/distributed_data_loading/cifar10_part_1.parquet",
+        "/scratch/ssm10076/pytorch-example/Parallel-XGBoost/outputs/distributed_data_loading/cifar10_part_2.parquet",
+        "/scratch/ssm10076/pytorch-example/Parallel-XGBoost/outputs/distributed_data_loading/cifar10_part_3.parquet",
+        "/scratch/ssm10076/pytorch-example/Parallel-XGBoost/outputs/distributed_data_loading/cifar10_part_4.parquet",
+    ],
+    label="label_col",
+)
 val_set = RayDMatrix(val_x, val_y)
 
 # Initialize the dictionary to store evaluation results
@@ -75,7 +83,7 @@ bst = train(
         "eval_metric": ["mlogloss", "merror"],
         "num_class": 10,
         "seed": 42,
-        "tree_method": "gpu_hist",
+        "tree_method": "hist",
         "device": "cuda",
     },
     train_set,
@@ -84,7 +92,7 @@ bst = train(
     verbose_eval=True,
     num_boost_round=10,
     early_stopping_rounds=10,
-    ray_params=RayParams(num_actors=2, gpus_per_actor=1, cpus_per_actor=4),
+    ray_params=RayParams(num_actors=1, gpus_per_actor=1, cpus_per_actor=8),
 )
 
 # Training time
@@ -114,7 +122,7 @@ plt.legend()
 plt.grid(True)
 
 # Save plot to file
-plt.savefig("training_validation_accuracy_multi2.png")
+plt.savefig("training_validation_accuracy_cpu_only.png")
 plt.show()
 
 # Print final accuracy values

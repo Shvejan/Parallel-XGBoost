@@ -2,9 +2,9 @@
 
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=8
 #SBATCH --time=00:30:00
-#SBATCH --mem=128GB
+#SBATCH --mem=28GB
 #SBATCH --gres=gpu:rtx8000:2
 #SBATCH --job-name=b2
 
