@@ -1,0 +1,43 @@
+# Parallel XGBoost on CIFAR10 - Benchmarking and Optimization
+
+## Description of the Project
+
+This project focuses on benchmarking the XGBoost algorithm over the CIFAR10 dataset across various parallelization techniques. The key objective is to evaluate and enhance the performance of the XGBoost algorithm in different hardware configurations, utilizing parallel computing frameworks such as Ray and distributed data loading systems like Hadoop.
+
+## Project Milestones and Their Completion Status
+
+- **Feasibility Testing**
+  - [x] Colossal AI + XGBoost compatibility
+  - [x] Ray + XGBoost integration
+- **Benchmarking**
+  - [x] Ray + XGBoost on CPU (2 to 12 cores)
+  - [x] Ray + XGBoost on single-node GPU (1, 2, 4 GPUs)
+  - [x] Ray + XGBoost on multi-node GPU (1, 2, 4 GPUs)
+  - [x] Benchmark distributed data loading with Hadoop
+- **Analysis and Optimization**
+  - [x] Analyze benchmark results
+  - [x] Optimize for better performance with Ray Hyperparameter Tune
+
+## Repository and Code Structure
+
+This repository is organized into several directories and scripts, each with a specific purpose in the overall benchmarking and optimization process:
+
+- **/cpu_only**: Contains scripts for running benchmarks on CPU-only configurations.
+
+  - `cpu_only.py`: Execute this script to run the benchmarking on different CPU core configurations.
+
+- **/distributed_data_loading**: Scripts related to the distributed loading of the CIFAR10 dataset.
+
+  - `split_data.py`: Splits the dataset into multiple parquet files for distributed data loading
+  - `train-code.py`: The main training script that uses distributed data.
+
+- **/finetune**: Houses the scripts for model fine-tuning and hyperparameter optimization.
+
+  - `main.py`: The primary script for running the fine-tuning processes.
+
+- **multi_node**: Contains subdirectories for running benchmarks on multi-GPU, multi-node setups.
+
+  - `1-gpu`, `2-gpus`, `4-gpus`: Each directory contains scripts configured for the respective number of GPUs across multiple nodes.
+
+- **single_node**: Contains subdirectories for running benchmarks on single-node GPU setups.
+  - `1-gpu`, `2-gpus`, `4-gpus`: Each directory includes scripts for running the benchmarks on 1, 2, or 4 GPUs on a single node.
